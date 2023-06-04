@@ -1,0 +1,23 @@
+class Solution {
+    // Function to return a list containing the DFS traversal of the graph.
+    public ArrayList<Integer> dfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj) {
+        
+        boolean[] visited  = new boolean[V];
+        ArrayList<Integer> al = new ArrayList<>();
+         dfs(0 , adj , visited  , al);
+        
+        return al;
+    }
+    
+    private static void dfs(int node , ArrayList<ArrayList<Integer>> adj , boolean[] visited , ArrayList<Integer> al){
+        visited[node] = true;
+        al.add(node);
+        
+        for(int val : adj.get(node)){
+            if(visited[val] == false){
+                dfs(val , adj , visited , al);
+            }
+        }
+        
+    }
+}
